@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-
-const card_meta = 'this is some meta data';  // Deliberately add unused variable
-
+import { useCustomColorScheme } from '@/context/ThemeContext';
 
 type CardProps = {
     name: string;
@@ -27,6 +25,9 @@ export default function Card({
                                  rarity,
                                  frontArt
                              }: CardProps) {
+    const { theme } = useCustomColorScheme();
+    const styles = getStyles(theme);
+
     return (
         <View style={styles.card}>
             <View style={styles.imageContainer}>
@@ -50,9 +51,9 @@ export default function Card({
     );
 }
 
-const styles = StyleSheet.create({
+const getStyles = (theme: string) => StyleSheet.create({
     card: {
-        backgroundColor: '#1F2937',
+        backgroundColor: theme === 'light' ? '#FFFFFF' : '#1F2937',
         borderRadius: 8,
         padding: 8,
         margin: 8,
@@ -83,12 +84,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#FFFFFF',
+        color: theme === 'light' ? '#000' : '#FFFFFF',
         marginBottom: 4,
     },
     detail: {
         fontSize: 14,
-        color: '#D1D5DB',
+        color: theme === 'light' ? '#000' : '#FFFFFF',
         marginBottom: 2,
     },
 });

@@ -13,12 +13,14 @@ export const fetchCatalog = async () => {
     }
 };
 
-export const searchCards = async (hp: string) => {
+export const searchCards = async (hp: string, order?: string, dir?: string) => {
     try {
         const response = await axios.get(`${BASE_URL}/cards/search`, {
             params: {
                 q: `h=${hp}`,
                 pretty: true,
+                order: order || 'Name',
+                dir: dir || 'asc',
             },
         });
         console.log('Search response:', response.data); // Debug log

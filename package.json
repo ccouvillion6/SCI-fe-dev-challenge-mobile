@@ -28,6 +28,7 @@
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@react-native-picker/picker": "^2.10.2",
+    "@react-native-segmented-control/segmented-control": "^2.5.7",
     "@react-navigation/bottom-tabs": "^7.0.0",
     "@react-navigation/native": "^7.0.0",
     "axios": "^1.7.9",
@@ -44,6 +45,8 @@
     "expo-system-ui": "~4.0.6",
     "expo-web-browser": "~14.0.1",
     "local-cors-proxy": "^1.1.0",
+    "node": "^20.18.1",
+    "prettier": "^3.4.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native": "0.76.5",

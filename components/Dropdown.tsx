@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, useColorScheme } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { fetchCatalog } from '../api/api';
 
@@ -12,6 +12,8 @@ export default function Dropdown({ onSelect }: DropdownProps) {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedValue, setSelectedValue] = useState<string>('');
+    const colorScheme = useColorScheme() ?? 'light';
+    const styles = getStyles(colorScheme);
 
     useEffect(() => {
         async function loadOptions() {
@@ -59,21 +61,21 @@ export default function Dropdown({ onSelect }: DropdownProps) {
     );
 }
 
-const styles = StyleSheet.create({
+const getStyles = (scheme: 'light' | 'dark') => StyleSheet.create({
     container: {
         marginVertical: 10,
         borderWidth: 1,
-        borderColor: '#4B5563',
+        borderColor: scheme === 'dark' ? '#4B5563' : '#E5E7EB',
         borderRadius: 8,
-        backgroundColor: '#374151',
+        backgroundColor: scheme === 'dark' ? '#F3F4F6' : '#374151',
     },
     picker: {
-        color: '#FFFFFF',
+        color: scheme === 'dark' ? '#1F2937' : '#FFFFFF',
         height: 50,
     },
     loadingText: {
         textAlign: 'center',
-        color: '#FFFFFF',
+        color: scheme === 'dark' ? '#1F2937' : '#FFFFFF',
         padding: 10,
     },
     errorText: {

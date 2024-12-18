@@ -14,7 +14,7 @@ describe('API Service', () => {
 
         const result = await fetchCatalog();
         expect(mockedAxios.get).toHaveBeenCalledWith(`http://localhost:8010/proxy/catalog/hps`);
-        expect(result.data).toEqual(['wrong', 'data']); // This will fail
+        expect(result.data).toEqual(['1', '2', '3']);
     });
 
     it('searchCards queries by HP', async () => {

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { SplashScreen, Stack } from 'expo-router';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Colors } from '@/constants/Colors';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -24,6 +25,7 @@ export default function RootLayout() {
   }, []);
 
   return (
+    <ThemeProvider>
       <Stack
           screenOptions={{
             headerStyle: {
@@ -34,5 +36,6 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
+    </ThemeProvider>
   );
 }

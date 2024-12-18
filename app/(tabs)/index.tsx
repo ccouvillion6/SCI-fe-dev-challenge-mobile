@@ -1,12 +1,14 @@
 // app/(tabs)/index.tsx
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
+
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import Dropdown from '@/components/Dropdown';
 import CardList from '@/components/CardList';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function HomeScreen() {
     const [selectedHP, setSelectedHP] = useState<string>('');
@@ -24,6 +26,7 @@ export default function HomeScreen() {
             }>
             <ThemedView style={styles.titleContainer}>
                 <ThemedText type="title">Card Search</ThemedText>
+                <ThemeToggle />
             </ThemedView>
 
             <ThemedView style={styles.searchContainer}>
@@ -68,5 +71,5 @@ const styles = StyleSheet.create({
     emptyState: {
         alignItems: 'center',
         padding: 20,
-    }
+    },
 });
